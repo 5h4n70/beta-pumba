@@ -43,23 +43,22 @@ client.on("ready", async () => {
 
 client.on("message",async message =>{
   
-    if(message.content=="test") {
-          if(myFunctions.is_botMaster(message.member))
-                 message.reply("you are a bot master");
-          else 
-                 message.reply("you are not allowed to use this  command!");
+    if(message.channel.type=="dm" && !message.author.bot  ) {
+        if(message.content.startsWith(config.prefix))
+          return ;
+        else{
+             myFunctions.dm_received(client,message);
+        }
     }
-
+    
 
     client.prefix = prefix;
     if(message.author.bot) return; // This line makes sure that the bot does not respond to other bots
     if(!message.guild) return;
     if(!message.content.startsWith(prefix)) return; // This line makes sure that the bot does not respond to other messages with the bots prefix
     if(!message.member) message.member = await message.guild.fetchMember(message);
-
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
-    // console.log(cmd);
     if(cmd.length ===0) return;
 
     let command = client.commands.get(cmd);

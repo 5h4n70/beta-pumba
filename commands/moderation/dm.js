@@ -3,10 +3,12 @@ const config = require("../../config.json")
 const myFunctions = require('../../functions.js');
 const { is_allowed } = require("../../functions.js");
 
+
+
 module.exports = {
-    name: "play",
+    name: "dm",
     category: "moderation",
-    aliases: ["watch"],
+    aliases: ["private"],
     description: "set bot status",
     usage: `${config.prefix}play with me \n ${config.prefix}watch pumba's Video`,
 
@@ -19,14 +21,19 @@ module.exports = {
             onlyModerator: true,
             onlyTrialModerator: false
         }
+
         var go = is_allowed(local_prm, myFunctions.check_permissions(message.member));
         if (go) {
-            var d= args.join(" ");
-            if(cmd=="play"){
-                client.user.setActivity(`${d}`,{ type:'PLAYING' }).catch(console.error);
-            }
-            else if(cmd=="watch"){
-                client.user.setActivity(`${d}`,{type:'WATCHING' ,url:"https://discord.gg/asdfa" }).catch(console.error);
+            args.shift();
+            var d = args.join(" ");
+            const fm=message.mentions.members.first();
+            if(!fm)
+              fm = message.author;
+            if(cmd=="dm" || cmd=="private" ){
+                if(d.length)
+                  fm.send(d);
+                else
+                  message.reply(`make sure your typed the command correctly: ${config.prefix}dm @user your_text`);
             }
             message.react('✅').catch(console.error);
         }
