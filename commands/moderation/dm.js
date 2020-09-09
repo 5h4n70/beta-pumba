@@ -1,7 +1,12 @@
-const { MessageEmbed, Client } = require("discord.js");
+const {
+    MessageEmbed,
+    Client
+} = require("discord.js");
 const config = require("../../config.json")
 const myFunctions = require('../../functions.js');
-const { is_allowed } = require("../../functions.js");
+const {
+    is_allowed
+} = require("../../functions.js");
 
 
 
@@ -16,7 +21,7 @@ module.exports = {
         var local_prm = {
             onlyServerManager: true,
             onlyHeadAdmin: true,
-            onlyAdmin: false,
+            onlyAdmin: true,
             onlyHeadModerator: false,
             onlyModerator: true,
             onlyTrialModerator: false
@@ -24,20 +29,28 @@ module.exports = {
 
         var go = is_allowed(local_prm, myFunctions.check_permissions(message.member));
         if (go) {
-            args.shift();
+            var mid = args.shift();
             var d = args.join(" ");
-            const fm=message.mentions.members.first();
-            if(!fm)
-              fm = message.author;
-            if(cmd=="dm" || cmd=="private" ){
-                if(d.length)
-                  fm.send(d);
+            var fm = message.mentions.members.first();
+            if (!fm) {
+                const targetMember = mid;
+                const guildId = "750687770904887659";
+                const server = client.guilds.cache.get(guildId);
+                const serverMember = server.members.cache.get(targetMember);
+                if (serverMember)
+                    fm = serverMember;
                 else
-                  message.reply(`make sure your typed the command correctly: ${config.prefix}dm @user your_text`);
+                    fm = message.author;
+            }
+            if (cmd == "dm" || cmd == "private") {
+                if (d.length)
+                    fm.send(d);
+                //   console.log(fm);
+                else
+                    message.reply(`make sure your typed the command correctly: ${config.prefix}dm @user your_text`);
             }
             message.react('✅').catch(console.error);
-        }
-        else{
+        } else {
             message.react('❌').catch(console.error);
         }
     }

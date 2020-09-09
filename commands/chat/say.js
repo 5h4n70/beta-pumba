@@ -15,7 +15,7 @@ module.exports = {
         var local_prm = {
             onlyServerManager: true,
             onlyHeadAdmin: true,
-            onlyAdmin: false,
+            onlyAdmin: true,
             onlyHeadModerator: false,
             onlyModerator: false,
             onlyTrialModerator: false

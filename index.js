@@ -4,7 +4,7 @@ const port = 3000;
 
 app.get('/', (req, res) => res.send("Don\'t hack me pls"));
 
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
+app.listen(port, () => console.log(`Bot listening at http://localhost:${port}`));
 
 // ================= START BOT CODE ===================
 

@@ -5,8 +5,8 @@ const ServerManager = "751386467246407730"
 const HeadAdmin = "750687771206746118";
 const Admin = "750687771206746117";
 const HeadModerator = "750687771206746116";
-// const Moderator = "750687771206746115";
-const Moderator = "752478986122035200"; //test
+const Moderator = "750687771206746115";
+// const Moderator = "752478986122035200"; //test
 const TrialModerator = "750687771206746114";
 
 module.exports = {
@@ -67,8 +67,8 @@ module.exports = {
         return false;
     },
     dm_received: function (client,msg) {
-        const mailbox = "753155044500832318";
-        const guildId = "752453068171247656";
+        const mailbox = "753215023761064006";
+        const guildId = "750687770904887659";
         const server = client.guilds.cache.get(guildId);
         const boxChannel=server.channels.cache.get(mailbox);
         if(boxChannel){
@@ -80,13 +80,16 @@ module.exports = {
             .setColor('dfee04')
             .setFooter(`Sender ID: ${msg.author.id}`)
             .setTimestamp();
-            
+           boxChannel.send(`Live mention: ${msg.author}`)
            boxChannel.send(embed);
         }
         else{
             console.log("inbox channel not found");
         }
         // console.log(msg.content);
-    }
+    },
+    formatDate: function(date) {
+        return new Intl.DateTimeFormat("en-us").format(date);
+      }
 
 }
