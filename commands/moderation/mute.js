@@ -25,9 +25,9 @@ module.exports = {
         };
         const redisKeyPrefix = 'muted-';
 
+        message.delete();
         var go = is_allowed(local_prm, myFunctions.check_permissions(message.member));
         if (go) {
-            message.delete();
             var muteValue, mutyType = "",
                 totalMuteTime = -1;
             var txt = "";
@@ -78,7 +78,7 @@ module.exports = {
                     .setTimestamp();
 
                 message.channel.send(embed);
-                if (totalMuteTime) {
+                if (totalMuteTime>0) {
                     var p = setInterval(function () {
                         targeted_users.forEach(element => {
                             element.roles.remove(muteRole);
