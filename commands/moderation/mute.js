@@ -71,15 +71,15 @@ module.exports = {
                     .setTimestamp();
 
                 message.channel.send(embed);
-                if (totalMuteTime) {
-                    var p = setInterval(function () {
-                        targeted_users.forEach(element => {
-                            element.roles.remove(muteRole);
-                            message.channel.send(`${ml.join(" , ")} ${txt} unmuted now!`);
-                        });
-                        clearInterval(p);
-                    }, totalMuteTime * 1000);
-                }
+                // if (totalMuteTime) {
+                //     var p = setInterval(function () {
+                //         targeted_users.forEach(element => {
+                //             element.roles.remove(muteRole);
+                //             message.channel.send(`${ml.join(" , ")} ${txt} unmuted now!`);
+                //         });
+                //         clearInterval(p);
+                //     }, totalMuteTime * 1000);
+                // }
             }
 
         } else {
