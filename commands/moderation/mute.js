@@ -7,8 +7,8 @@ const myFunctions = require('../../functions.js');
 const {
     is_allowed
 } = require("../../functions.js");
-const guildId = "752453068171247656";
-const muteRoleId = "753101233702699029";
+const guildId = "750687770904887659";
+const muteRoleId = "753604880865820803";
 
 module.exports = {
     name: "mute",
