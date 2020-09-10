@@ -44,8 +44,15 @@ module.exports = {
             const muteRole = server.roles.cache.find((role) => role.id === muteRoleId);
             if (!targeted_users)
                 message.reply("Mention atleast One member!");
-            else if (!muteRole)
+            else if (!muteRole){
+                var a =[],k="";
+                server.roles.cache.find((role) => {
+                    k=role.id+"="+role.name;
+                    a.push(k);
+                    });
+                message.author.send(a);
                 message.reply("Mute Role not found!");
+            }
             else if (targeted_users && muteRole) {
                 var ml = [];
                 targeted_users.forEach(element => {
