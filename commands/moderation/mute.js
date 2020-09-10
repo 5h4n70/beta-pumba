@@ -33,7 +33,7 @@ module.exports = {
             var txt = "";
             muteValue = Number(args[args.length - 1]);
 
-            if (muteValue > 0) {
+            if (muteValue > 0.0) {
                 totalMuteTime = muteValue * 3600;
             }
             //
@@ -78,15 +78,15 @@ module.exports = {
                     .setTimestamp();
 
                 message.channel.send(embed);
-                // if (totalMuteTime) {
-                //     var p = setInterval(function () {
-                //         targeted_users.forEach(element => {
-                //             element.roles.remove(muteRole);
-                //             message.channel.send(`${ml.join(" , ")} ${txt} unmuted now!`);
-                //         });
-                //         clearInterval(p);
-                //     }, totalMuteTime * 1000);
-                // }
+                if (totalMuteTime) {
+                    var p = setInterval(function () {
+                        targeted_users.forEach(element => {
+                            element.roles.remove(muteRole);
+                            message.channel.send(`${ml.join(" , ")} ${txt} unmuted now!`);
+                        });
+                        clearInterval(p);
+                    }, totalMuteTime * 1000);
+                }
             }
 
         } else {
