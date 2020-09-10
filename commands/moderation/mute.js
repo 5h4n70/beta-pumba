@@ -82,7 +82,7 @@ module.exports = {
                     var p = setInterval(function () {
                         targeted_users.forEach(element => {
                             element.roles.remove(muteRole);
-                            message.channel.send(`${ml.join(" , ")} ${txt} unmuted now!`);
+                            message.channel.send(`>${ml.join(" , ")} ${txt} unmuted !`);
                         });
                         clearInterval(p);
                     }, totalMuteTime * 1000);

@@ -36,7 +36,7 @@ const myFunctions= require('./functions.js');
 
 client.on("ready", async () => {
   console.log(`${client.user.tag} is online`);
-  client.user.setActivity('a game with Boka',{type:'PLAYING' ,url:"https://discord.gg/asdfa" }).catch(console.error);
+  client.user.setActivity('PUMBA\'s New Video!',{type:'WATCHING' ,url:"https://discord.gg/asdfa" }).catch(console.error);
 });
   
 
