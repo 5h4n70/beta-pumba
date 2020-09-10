@@ -8,7 +8,7 @@ const {
     is_allowed
 } = require("../../functions.js");
 const guildId = "750687770904887659";
-const muteRoleId = "753604880865820803";
+const muteRoleId = "752202606239154288";
 
 module.exports = {
     name: "mute",
@@ -41,16 +41,16 @@ module.exports = {
 
             var targeted_users = message.mentions.members;
             const server = client.guilds.cache.get(guildId);
-            const muteRole = server.roles.cache.find((role) => role.id === muteRoleId);
+            const muteRole = server.roles.cache.find((role) => role.name.toLowerCase() === "muted");
             if (!targeted_users)
                 message.reply("Mention atleast One member!");
             else if (!muteRole){
-                var a =[],k="";
-                server.roles.cache.find((role) => {
-                    k=role.id+"="+role.name;
-                    a.push(k);
-                    });
-                message.author.send(a);
+                // var a =[],k="";
+                // server.roles.cache.find((role) => {
+                //     k=role.id+"="+role.name;
+                //     a.push(k);
+                //     });
+                // message.author.send(a);
                 message.reply("Mute Role not found!");
             }
             else if (targeted_users && muteRole) {
