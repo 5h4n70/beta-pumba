@@ -34,7 +34,7 @@ const {
 } = require("process");
 const prefix = config.prefix;
 const myFunctions = require('./functions.js');
-const monitor_channel = ["750687772813033541"]
+const monitor_channel = ["750687772813033541"];
 
 ['command'].forEach(handler => {
   require(`./handler/${handler}`)(client);
