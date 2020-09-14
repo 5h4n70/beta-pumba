@@ -91,8 +91,13 @@ function channel_monitor(message) {
       if (item.length)
         fl.push(item)
     });
-    if (fl.length > 1)
-      message.delete();
+    if (fl.length > 1) {
+      var p = setInterval(function () {
+        message.delete();
+        clearInterval(p);
+      }, 3000);
+      
+    }
   }
 }
 
