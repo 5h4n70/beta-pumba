@@ -82,6 +82,13 @@ module.exports = {
             .setTimestamp();
            boxChannel.send(`Live mention: ${msg.author}`)
            boxChannel.send(embed);
+           if (msg.attachments.size) {
+            boxChannel.send("Attachments:")
+            const d = msg.attachments;
+            d.forEach(item => {
+                boxChannel.send(item.proxyURL);
+            });
+        }
         }
         else{
             console.log("inbox channel not found");
