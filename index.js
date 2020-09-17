@@ -74,14 +74,14 @@ client.on("message", async message => {
   /*
     Server UpVotes thingy goes here
   */
-  if (message.channel.id == "756165504556859484" && !message.author.bot) { //DBLbot channel
+  if (message.channel.id == "756165504556859484" && !message.author.bot) { //DBLbot channel=756165504556859484
 
     const vid = myFunctions.get_voter_id(message.embeds[0].description);
     const pd = myFunctions.getServerMemberByID(client, '750687770904887659', vid);
     if (pd) {
       fromDBLbot.add(pd.id);
     }
-  } else if (message.channel.id == "756198759855292576" && !message.author.bot) { //proof channel
+  } else if (message.channel.id == "756198759855292576" && !message.author.bot) { //proof channel=756198759855292576
     if (message.attachments.size > 0) {
       message.react('756222468401791057');
       fromProofChannel.add(message.author.id);
@@ -94,11 +94,11 @@ client.on("message", async message => {
     let Tem_set_value;
     for (let i of fromDBLbot) {
       if (fromProofChannel.has(i)) {
+        const server_here = client.guilds.cache.get('750687770904887659');
+        const proofChannel = server_here.channels.cache.get('756198759855292576');
+        proofChannel.send(`<@${i}>, Thanks for voting! Remember, the more you vote, the higher chance you win! You can vote every **12** hours! 😍`)
         fromDBLbot.delete(i);
         fromProofChannel.delete(i);
-        const server_here = client.guilds.cache.get('750687770904887659');
-        const proofChannel = server_here.channels.cache.get(mailbox);
-        proofChannel.send(`<@${i}, Thanks for voting! Remember, the more you vote, the higher chance you win! You can vote every **12** hours! 😍`)
         break;
       }
     }
