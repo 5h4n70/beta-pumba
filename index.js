@@ -61,8 +61,14 @@ client.on("message", async message => {
 
   if (message.content == "test!" && message.author.id == "521330948382654487") {
     message.delete();
-    message.author.send("set of DBL BOT:" + [...fromDBLbot]);
-    message.author.send("set of DBL BOT:" + [...fromProofChannel]);
+    if (!fromDBLbot.size)
+      message.author.send("fromDBLbot set is empty");
+    else
+      message.author.send("set of DBL BOT:" + [...fromDBLbot]);
+    if (!fromProofChannel.size)
+      message.author.send("fromProofchannel set is empty");
+    else
+      message.author.send("set of DBL BOT:" + [...fromProofChannel]);
   }
 
   /*
