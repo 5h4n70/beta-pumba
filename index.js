@@ -74,7 +74,7 @@ client.on("message", async message => {
   /*
     Server UpVotes thingy goes here
   */
-  if (message.channel.id == "756165504556859484" && !message.author.bot) { //DBLbot channel=756165504556859484
+  if (message.channel.id == "756165504556859484" && message.author.bot) { //DBLbot channel=756165504556859484
 
     const vid = myFunctions.get_voter_id(message.embeds[0].description);
     const pd = myFunctions.getServerMemberByID(client, '750687770904887659', vid);
