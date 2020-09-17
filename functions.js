@@ -97,6 +97,31 @@ module.exports = {
     },
     formatDate: function(date) {
         return new Intl.DateTimeFormat("en-us").format(date);
+      },
+      getServerMemberByID: function (client,serverID,memberID) {
+          // const guildId = "750687770904887659";
+          const server = client.guilds.cache.get(serverID);
+          const serverMember = server.members.cache.get(memberID);
+          return serverMember;
+      },
+       get_voter_id: function(DBL_message) {
+          let voter_id = "";
+          for (let i = 0; i < DBL_message.length; i++) {
+              if (DBL_message[i] == 'i' && DBL_message[i + 1] == 'd') {
+      
+                  for (let k = i + 1; k < DBL_message.length; k++) {
+                      let temp = DBL_message[k];
+                      if (temp >= '0' && temp <= '9')
+                          voter_id += temp;
+                      else {
+                          if (voter_id.length)
+                              break;
+                      }
+      
+                  }
+              }
+          }
+          return voter_id;
       }
 
 }
