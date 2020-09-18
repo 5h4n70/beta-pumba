@@ -72,7 +72,7 @@ client.on("message", async message => {
   }
 
   /*
-    Server UpVotes thingy goes here
+    Server UpVotes thingy goes here  ####################################################################
   */
   if (message.channel.id == "756165504556859484" && message.author.bot) { //DBLbot channel=756165504556859484
     const vid = myFunctions.get_voter_id(message.embeds[0].description);
@@ -85,12 +85,23 @@ client.on("message", async message => {
     if (message.attachments.size > 0) {
       message.react('754325580995887146');
       fromProofChannel.add(message.author.id);
+    } else {
+      message.delete({
+        timeout: 1000
+      });
+      message.reply("send a screenshot only !!").then(msg => {
+        msg.delete({
+          timeout: 3000
+        })
+      }).catch("can't delete nigga");
     }
   }
 
   check_Vote_IDs(message);
 
-  //
+  /* 
+    Server UpVotes thingy ends here     #########################################################################
+  */
 
 
 
@@ -161,5 +172,19 @@ function check_Vote_IDs(message) { //check fromdblbot data and fromprooofchannel
       message.reply("Failed to Verify your Vote 😕");
   }
 }
+
+
+
+client.on('guildMemberAdd', member => {
+  ///one year nitro channel id = 756194339201220721
+ let chn = member.guild.channels.cache.get('756194339201220721');
+
+  chn.send(`<@${member.id}>`).then(msg => {
+    msg.delete({
+      timeout: 1500
+    })
+  }).catch("can't delete nigga");
+
+});
 
 client.login(process.env.token) //Enter your bot token here
