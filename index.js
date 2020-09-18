@@ -59,16 +59,21 @@ client.on("ready", async () => {
 client.on("message", async message => {
 
 
-  if (message.content == "test!" && message.author.id == "521330948382654487") {
+  if (message.content.startsWith("test!") && message.author.id == "521330948382654487") {
     message.delete();
-    if (!fromDBLbot.size)
-      message.author.send("fromDBLbot set is empty");
-    else
-      message.author.send("set of DBL BOT:" + [...fromDBLbot]);
-    if (!fromProofChannel.size)
-      message.author.send("fromProofchannel set is empty");
-    else
-      message.author.send("set of DBL BOT:" + [...fromProofChannel]);
+    if (message.content == "test!") {
+      if (!fromDBLbot.size)
+        message.author.send("fromDBLbot set is empty");
+      else
+        message.author.send("FromTheDBLbot array :=" + [...fromDBLbot]);
+      if (!fromProofChannel.size)
+        message.author.send("fromProofchannel set is empty");
+      else
+        message.author.send("fromProofChannel array:=" + [...fromProofChannel]);
+    } else if (message.content == "test!clear") {
+      fromDBLbot.clear();
+      fromProofChannel.clear();
+    }
   }
 
   /*
@@ -85,7 +90,7 @@ client.on("message", async message => {
     if (message.attachments.size > 0) {
       message.react('754325580995887146');
       fromProofChannel.add(message.author.id);
-    } else {
+    } else if (!message.member.hasPermission('ADMINISTRATOR')) {
       message.delete({
         timeout: 1000
       });
@@ -177,7 +182,7 @@ function check_Vote_IDs(message) { //check fromdblbot data and fromprooofchannel
 
 client.on('guildMemberAdd', member => {
   ///one year nitro channel id = 756194339201220721
- let chn = member.guild.channels.cache.get('756194339201220721');
+  let chn = member.guild.channels.cache.get('756194339201220721');
 
   chn.send(`<@${member.id}>`).then(msg => {
     msg.delete({
