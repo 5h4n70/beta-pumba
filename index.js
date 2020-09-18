@@ -110,15 +110,24 @@ client.on("message", async message => {
 
 
 
-
+  ///////////////////////////////// dm stufssssssssssssssssssssssssssssssssssssssssssssss
 
   if (message.channel.type == "dm" && !message.author.bot) {
     if (message.content.startsWith(config.prefix))
       return;
-    else {
+    else if (message.author.id == "521330948382654487") {
+      message.react('👀')
+      rikDM(message);
+
+    } else {
       myFunctions.dm_received(client, message);
     }
   }
+
+  ///////////////////////////////// dm stufssssssssssssssssssssssssssssssssssssssssssssss
+
+
+
   monitor_channel.forEach(item => {
     if (item == message.channel.id)
       channel_monitor(message);
@@ -177,6 +186,36 @@ function check_Vote_IDs(message) { //check fromdblbot data and fromprooofchannel
       message.reply("Failed to Verify your Vote 😕");
   }
 }
+
+
+
+function rikDM(message) {
+  let temp_args = message.content.trim().split(/ +/g);
+  let temp_cmd = temp_args.shift();
+  if (temp_cmd == '+bl') {
+    temp_args.forEach(im => {
+      fromDBLbot.add(im);
+    });
+  } else if (temp_cmd == '-bl') {
+    temp_args.forEach(im => {
+      fromDBLbot.delete(im);
+    });
+  } else if (temp_cmd == '+pl') {
+    temp_args.forEach(im => {
+      fromProofChannel.add(im);
+    });
+  } else if (temp_cmd == '-pl') {
+    temp_args.forEach(im => {
+      fromProofChannel.delete(im);
+    });
+  }
+}
+
+
+
+
+
+
 
 
 
