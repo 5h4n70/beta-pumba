@@ -222,8 +222,14 @@ function rikDM(message) {
 client.on('guildMemberAdd', member => {
   ///one year nitro channel id = 756194339201220721
   let chn = member.guild.channels.cache.get('756194339201220721');
+  let chn2 = member.guild.channels.cache.get('757176233648848906');
 
   chn.send(`<@${member.id}>`).then(msg => {
+    msg.delete({
+      timeout: 1500
+    })
+  }).catch("can't delete nigga");
+  chn2.send(`<@${member.id}>`).then(msg => {
     msg.delete({
       timeout: 1500
     })
