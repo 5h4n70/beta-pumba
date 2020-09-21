@@ -10,7 +10,7 @@ app.listen(port, () => console.log(`Bot listening at http://localhost:${port}`))
 
 
 
-
+var last_story_teller;
 
 const {
   Client,
@@ -151,19 +151,25 @@ client.on("message", async message => {
 });
 
 function channel_monitor(message) {
-  if (message.channel.id == "750687772813033541") {
-    const args = message.content.split(/ +/g);
-    var fl = [];
-    args.forEach(function (item) {
-      if (item.length)
-        fl.push(item)
-    });
-    if (fl.length > 1) {
-      var p = setInterval(function () {
-        message.delete();
-        clearInterval(p);
-      }, 3000);
 
+  if (message.channel.id == "750687772813033541") { /// one word story channel
+    if (last_story_teller && (last_story_teller.id == message.author.id)) {
+      message.delete();
+    } else {
+      last_story_teller = message.author;
+      const args = message.content.split(/ +/g);
+      var fl = [];
+      args.forEach(function (item) {
+        if (item.length)
+          fl.push(item)
+      });
+      if (fl.length > 1) {
+        var p = setInterval(function () {
+          message.delete();
+          clearInterval(p);
+        }, 3000);
+
+      }
     }
   }
 }

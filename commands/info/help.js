@@ -13,7 +13,7 @@ module.exports = {
     run: async (client, message) => {
 
         const embed = new MessageEmbed()
-            .setTitle("** List of Commands**")
+            .setTitle("** List of Commands:**")
             .setColor('d413ee')
             .setDescription(` ${config.prefix}say your_messsage\n${config.prefix}csay #target_channel your_message
             ${config.prefix}ban @user reason\n${config.prefix}kick @user reason\n${config.prefix}play what_to_play\n${config.prefix}mute @user time_in_hour
