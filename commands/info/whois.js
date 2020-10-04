@@ -6,7 +6,7 @@ const {
 const {
     formatDate
 } = require("../../functions.js");
-
+const config= require("../../config.json")
 const ms = require("pretty-ms");
 
 module.exports = {
@@ -22,7 +22,7 @@ module.exports = {
             member = message.mentions.members.first();
         } else if (args[0]) {
             const targetMember = args[0];
-            const guildId = "750687770904887659";
+            const guildId = config.serverId;
             const server = client.guilds.cache.get(guildId);
             const serverMember = server.members.cache.get(targetMember);
             if (serverMember)

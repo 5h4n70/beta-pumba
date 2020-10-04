@@ -34,7 +34,7 @@ module.exports = {
             var fm = message.mentions.members.first();
             if (!fm) {
                 const targetMember = mid;
-                const guildId = "750687770904887659";
+                const guildId = config.serverId;
                 const server = client.guilds.cache.get(guildId);
                 const serverMember = server.members.cache.get(targetMember);
                 if (serverMember)

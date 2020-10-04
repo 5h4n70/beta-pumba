@@ -1,4 +1,5 @@
 const redis = require("../../redis.js")
+const config = require("../../config.json");
 const {
     MessageEmbed,
     Client
@@ -7,8 +8,8 @@ const myFunctions = require('../../functions.js');
 const {
     is_allowed
 } = require("../../functions.js");
-const guildId = "750687770904887659";
-const muteRoleId = "752202606239154288";
+const guildId = config.serverId;
+const muteRoleId = config.muteRole;
 
 module.exports = {
     name: "mute",

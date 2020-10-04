@@ -11,7 +11,7 @@ module.exports = {
   usage: '<cmd>',
 
   run: async (client, message) => {
-    const real_data=client.guilds.cache.get('750687770904887659');
+    const real_data=client.guilds.cache.get(config.serverId);
     const bot_count = real_data.members.cache.filter(member => member.user.bot).size;
     const voiceChannel_count = real_data.channels.cache.filter(ch => ch.type == "voice").size;
     const categoryChannel_count = real_data.channels.cache.filter(ch => ch.type == "category").size;

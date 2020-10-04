@@ -7,7 +7,7 @@ const myFunctions = require('../../functions.js');
 const {
     is_allowed
 } = require("../../functions.js");
-const lock_role = ["751521037572636681"];
+const lock_role = ["761855894258057224"];
 //member = 751521037572636681;
 module.exports = {
     name: "lock",

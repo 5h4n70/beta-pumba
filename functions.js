@@ -1,13 +1,13 @@
 const config = require("./config.json");
 const Discord = require("discord.js");
-const botMasters = "752478986122035200";
-const ServerManager = "751386467246407730"
-const HeadAdmin = "750687771206746118";
-const Admin = "750687771206746117";
-const HeadModerator = "750687771206746116";
-const Moderator = "750687771206746115";
+const botMasters = config.botMasters;
+const ServerManager = config.serverManager;
+const HeadAdmin = config.HeadAdmin;
+const Admin = config.Admin;
+const HeadModerator =config.HeadModerator;
+const Moderator = config.Moderator;
 // const Moderator = "752478986122035200"; //test
-const TrialModerator = "750687771206746114";
+const TrialModerator = config.TrailModerator;
 
 module.exports = {
 
@@ -67,8 +67,8 @@ module.exports = {
         return false;
     },
     dm_received: function (client,msg) {
-        const mailbox = "753215023761064006";
-        const guildId = "750687770904887659";
+        const mailbox = config.mailboxChannel;
+        const guildId = config.serverId;
         const server = client.guilds.cache.get(guildId);
         const boxChannel=server.channels.cache.get(mailbox);
         if(boxChannel){
