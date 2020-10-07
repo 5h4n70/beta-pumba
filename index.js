@@ -53,7 +53,7 @@ const monitor_channel = [];
 client.on("ready", async () => {
   console.log(`${client.user.tag} is online`);
   //client.user.setUsername("XeroNyte\'s Utilities")
-  client.user.setActivity('XeroNyte\'s New Video!', {
+  client.user.setActivity('XeroNyte\'s New Video🌺 !', {
     type: 'WATCHING',
     url: "https://discord.gg/asdfa"
   }).catch(console.error);
