@@ -120,7 +120,7 @@ client.on("message", async message => {
   if (message.channel.type == "dm" && !message.author.bot) {
     if (message.content.startsWith(config.prefix))
       return;
-    if(message.content=='add'){
+   /* if(message.content=='add'){
       Qdb.push('ke1','this is the value');
       message.react('😅')
     }
@@ -128,13 +128,13 @@ client.on("message", async message => {
       message.reply( Qdb.get('ke1'))
       message.react('🤦')
     }
-   /* else if (message.author.id == "521330948382654487") {
+    else if (message.author.id == "521330948382654487") {
       rikDM(message);
 
-    } else
+    } else*/
      {
       myFunctions.dm_received(client, message);
-    }*/
+    }
   }
 
   ///////////////////////////////// dm stufssssssssssssssssssssssssssssssssssssssssssssss
